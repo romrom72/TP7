@@ -33,7 +33,7 @@ namespace TP7.Services
 
             foreach (Contact c in listContact)
             {
-                if (c.getFirstName().Equals(contact.getFirstName())
+                if (c.getFirstName().Equals(contact.getFirstName()))
                 {
                     verif = true;
                 }
