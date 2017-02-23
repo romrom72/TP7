@@ -1,23 +1,21 @@
 ﻿
 <h2>Liste des contacts</h2>
-<div class="container-fluid">
+<form method="post" action="Index">
     <div class="row">
-        <form method="post" action="Index">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <input type="text" name="Filter" class="form-control" value=@ViewBag.Filter />
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" value="Submit" type="button">
-                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                            </button>
-                        </span>
-                    </div><!-- /input-group -->
-                </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-        </form>
-    </div>
-
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" name="Filter" class="form-control" value=@ViewBag.Filter />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" value="Submit" type="button">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+</form>
+<br/>
+<div class="container">
     <div class="row">
         <table class="table table-striped">
             <tr>
