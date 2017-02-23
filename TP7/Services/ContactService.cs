@@ -8,10 +8,10 @@ namespace TP7.Services
 {
     public class ContactService
     {
+        List<Contact> listContact = new List<Contact>();
+
         public List<Contact> getAll()
         {
-            List<Contact> listContact = new List<Contact>();
-
             listContact.Add(new Contact("Jean-Louis", "Kilo", "jean-louis@kedale.fr", "06.25.48.63.15"));
             listContact.Add(new Contact("Jean-Michel", "Stigmate", "jean-michel@kedale.fr", "06.94.23.21.58"));
             listContact.Add(new Contact("Charle-Edouard", "Denis", "charle-edouard@kedale.fr", "06.63.87.58.12"));
@@ -24,6 +24,22 @@ namespace TP7.Services
             listContact.Add(new Contact("François", "Hollande", "françois@kedale.fr", "07.15.94.63.74"));
 
             return listContact;
+        }
+
+        public bool creerContact(Contact contact)
+        {
+            bool verif = false;
+            listContact.Add(contact);
+
+            foreach (Contact c in listContact)
+            {
+                if (c.getFirstName().Equals(contact.getFirstName())
+                {
+                    verif = true;
+                }
+            }
+
+            return verif;
         }
     }
 }

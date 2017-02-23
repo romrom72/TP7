@@ -10,7 +10,8 @@ namespace TP7.Controllers
 {
     public class ContactController : Controller
     {
-        ContactService contactService = new ContactService();
+        public static ContactService contactService;
+        public static List<Contact> listContact = contactService.getAll();
 
         // GET: Contact
         public ActionResult Index()
@@ -19,8 +20,18 @@ namespace TP7.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Index(string filter)
+        {
+            ViewBag.Filter = filter;
+
+            List<Contact> listContact = contactService.getAll();
+            ViewBag.List = ContactController.Filter(filter, listContact);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Insert(string filter)
         {
             ViewBag.Filter = filter;
 
