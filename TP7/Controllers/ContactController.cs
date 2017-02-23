@@ -29,6 +29,12 @@ namespace TP7.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
         public static List<Contact> Filter(string filter, List<Contact> listContact)
         {
             List<Contact> listFilter = new List<Contact>();
