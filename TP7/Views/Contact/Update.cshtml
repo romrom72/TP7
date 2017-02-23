@@ -8,17 +8,30 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Form</title>
+    <title>Modifier le contact</title>
 </head>
 <body>
     <div> 
-        <form method="post" action="Update()">
+        <form method="post" action="~/ContactController/Update">
             <div class="form-group">
-                <label>Mail actuel : <input type="email" name="oldmail"></label>
-                <label>Nouveau mail : <input type="email" name="newmail"></label>
-                <input type="submit" name="submit" value=" Envoyer ">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control" id="nom" placeholder="Votre nom">
             </div>
-        </form>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Votre e-mail">
+            </div>
+            <div class="form-group">
+                <label for="tel">Téléphone</label>
+                <input type="tel" class="form-control" id="tel" placeholder="Votre Téléphone">
+            </div>
+
+            <button type="submit" class="btn btn-default">Modifier le contact</button>
+         </form>
     </div>
 </body>
 </html>
