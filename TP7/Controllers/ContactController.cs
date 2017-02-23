@@ -23,26 +23,26 @@ namespace TP7.Controllers
         public ActionResult Index(string filter)
         {
             ViewBag.Filter = filter;
-            ViewBag.List = ContactController.Filter(filter);
+
+            ViewBag.List = ContactController.Filter(filter, listContact);
             return View();
         }
 
-        public static List<Contact> Filter(string filter)
+        public static List<Contact> Filter(string filter, List<Contact> listContact)
         {
-            List<Contact> gg = GetAll();
-            List<Contact> Contacts = new List<Contact>();
-            foreach (Contact con in gg)
+            List<Contact> listFilter = new List<Contact>();
+            foreach (Contact con in listContact)
             {
-                if (con.FirstName.ToLower().Contains(filter.ToLower()) || con.LastName.ToLower().Contains(filter.ToLower()) || con.Email.ToLower().Contains(filter.ToLower()) || con.Phone.ToLower().Contains(filter.ToLower()))
+                if (con.getFirstName.ToLower().Contains(filter.ToLower()) || con.getLastName.ToLower().Contains(filter.ToLower()) || con.getEmail.ToLower().Contains(filter.ToLower()) || con.getPhone.ToLower().Contains(filter.ToLower()))
                 {
-                    Contacts.Add(con);
+                    listFilter.Add(con);
                 }
             }
-            if (Contacts.Count == 0)
+            if (listFilter.Count == 0)
             {
-                Contacts = GetAll();
+                listFilter = ContactService
             }
-            return Contacts;
+            return listFilter;
         }
     }
 }
