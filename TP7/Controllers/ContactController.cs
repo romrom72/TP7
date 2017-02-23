@@ -24,6 +24,7 @@ namespace TP7.Controllers
         {
             ViewBag.Filter = filter;
 
+            List<Contact> listContact = contactService.getAll();
             ViewBag.List = ContactController.Filter(filter, listContact);
             return View();
         }
@@ -33,14 +34,14 @@ namespace TP7.Controllers
             List<Contact> listFilter = new List<Contact>();
             foreach (Contact con in listContact)
             {
-                if (con.getFirstName.ToLower().Contains(filter.ToLower()) || con.getLastName.ToLower().Contains(filter.ToLower()) || con.getEmail.ToLower().Contains(filter.ToLower()) || con.getPhone.ToLower().Contains(filter.ToLower()))
+                if (con.getFirstName().ToLower().Contains(filter.ToLower()) || con.getLastName().ToLower().Contains(filter.ToLower()) || con.getEmail().ToLower().Contains(filter.ToLower()) || con.getPhone().ToLower().Contains(filter.ToLower()))
                 {
                     listFilter.Add(con);
                 }
             }
             if (listFilter.Count == 0)
             {
-                listFilter = ContactService
+                listFilter = listContact;
             }
             return listFilter;
         }
