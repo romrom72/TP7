@@ -7,10 +7,10 @@ namespace TP7.Models
 {
     public class Contact
     {
-        private String firstName;
-        private String lastName;
-        private String email;
-        private String phone;
+        public String firstName;
+        public String lastName;
+        public String email;
+        public String phone;
 
         public Contact(String firstName, String lastName, String email, String phone)
         {
