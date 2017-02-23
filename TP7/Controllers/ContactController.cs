@@ -29,7 +29,7 @@ namespace TP7.Controllers
             return View();
         }
 
-        [HttpPost]
+      
         public ActionResult Add()
         {
             return View();
