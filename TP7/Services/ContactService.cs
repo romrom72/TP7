@@ -12,6 +12,7 @@ namespace TP7.Services
         {
             List<Contact> listContact = new List<Contact>();
 
+
             listContact.Add(new Contact("Jean-Louis", "Kilo", "jean-louis@kedale.fr", "06.25.48.63.15"));
             listContact.Add(new Contact("Jean-Michel", "Stigmate", "jean-michel@kedale.fr", "06.94.23.21.58"));
             listContact.Add(new Contact("Charle-Edouard", "Denis", "charle-edouard@kedale.fr", "06.63.87.58.12"));
