@@ -4,15 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TP7.Models;
+using TP7.Services;
 
 namespace TP7.Controllers
 {
     public class ContactController : Controller
     {
+        ContactService contactService = new ContactService();
+
         // GET: Contact
         public ActionResult Index()
         {
-            ViewBag.List = ContactController.GetAll();
+            ViewBag.List = contactService.getAll();
             return View();
         }
 
@@ -20,46 +23,26 @@ namespace TP7.Controllers
         public ActionResult Index(string filter)
         {
             ViewBag.Filter = filter;
-            ViewBag.List = ContactController.Filter(filter);
+
+            ViewBag.List = ContactController.Filter(filter, listContact);
             return View();
         }
 
-        public static List<Contact> GetAll()
+        public static List<Contact> Filter(string filter, List<Contact> listContact)
         {
-            List<Contact> Contacts = new List<Contact>();
-            string[] FirtName = new string[] { "Dolphi", "Dobi", "Rollo", "Legolas", "abraham", "Donald", "Dolan", "adolfo", "adolph", "adrian" };
-            string[] LastName = new string[] { "Le dauphin", "Le nain", "Le gland", "Durand", "King of the north", "Grincheux", "Potté", "chaussettes", "Pim", "Poum" };
-            Random rnd = new Random();
-            Random rand = new Random(100);
-            for (int i = 0; i < 10; i++)
+            List<Contact> listFilter = new List<Contact>();
+            foreach (Contact con in listContact)
             {
-                Contact people = new Contact();
-                people.FirstName = FirtName[i];
-                people.LastName = LastName[i];
-                people.Email = FirtName[i] + "." + LastName[i] + "@mail.fr";
-                int tel = rand.Next(000000000, 999999999);
-                people.Phone = tel.ToString();
-                Contacts.Add(people);
-            }
-            return Contacts;
-        }
-
-        public static List<Contact> Filter(string filter)
-        {
-            List<Contact> gg = GetAll();
-            List<Contact> Contacts = new List<Contact>();
-            foreach (Contact con in gg)
-            {
-                if (con.FirstName.ToLower().Contains(filter.ToLower()) || con.LastName.ToLower().Contains(filter.ToLower()) || con.Email.ToLower().Contains(filter.ToLower()) || con.Phone.ToLower().Contains(filter.ToLower()))
+                if (con.getFirstName.ToLower().Contains(filter.ToLower()) || con.getLastName.ToLower().Contains(filter.ToLower()) || con.getEmail.ToLower().Contains(filter.ToLower()) || con.getPhone.ToLower().Contains(filter.ToLower()))
                 {
-                    Contacts.Add(con);
+                    listFilter.Add(con);
                 }
             }
-            if (Contacts.Count == 0)
+            if (listFilter.Count == 0)
             {
-                Contacts = GetAll();
+                listFilter = ContactService
             }
-            return Contacts;
+            return listFilter;
         }
     }
 }
